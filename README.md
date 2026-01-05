@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Skin Lesion Classifier</title>
+    
 </head>
 <body>
 
