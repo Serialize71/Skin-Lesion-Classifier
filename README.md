@@ -1,25 +1,40 @@
-This project implements a Convolutional Neural Network (CNN) using MATLAB to classify skin lesion into 7 categories:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Skin Lesion Classifier</title>
+</head>
+<body>
 
-nv (Melanocytic nevi)
-mel (Melanoma)
-bkl (Benign keratosis)
-bcc (Basal cell carcinoma)
-akiec (Actinic keratoses)
-vasc (Vascular lesions)
-df (Dermatofibroma)
+<h2>Project Overview</h2>
+<p>
+This project implements a <strong>Convolutional Neural Network (CNN) using MATLAB</strong>
+to classify skin lesion images into <strong>seven dermatological categories</strong>:
+Melanocytic nevi (<code>nv</code>), Melanoma (<code>mel</code>), Benign keratosis (<code>bkl</code>),
+Basal cell carcinoma (<code>bcc</code>), Actinic keratoses (<code>akiec</code>),
+Vascular lesions (<code>vasc</code>), and Dermatofibroma (<code>df</code>).
+</p>
 
-Dataset:
-I used HAM10000 dataset from kaggle, it is free via this link:
-Download link: https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000
+<h2>Dataset</h2>
+<p>
+The model is trained using the <strong>HAM10000 dataset</strong>, which is publicly available
+on Kaggle and can be downloaded for free from the following link:
+</p>
+<p>
+<a href="https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000" target="_blank">
+https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000
+</a>
+</p>
 
-Extract the folder an run sorting script, the sorting script:
+<p>
+After extracting the dataset, a custom sorting script is used to preprocess the data.
+The script reads lesion labels from <code>HAM10000_metadata.csv</code>, matches image IDs
+to their corresponding lesion types, and organizes the images into class-specific
+directories compatible with MATLAB’s <code>imageDatastore</code>.
+</p>
 
-Reads image labels from HAM10000_metadata.csv
-Matches image IDs to lesion types
-Organizes images into class-based directories required by MATLAB’s imageDatastore
-
-The images will be organized as follows:
-
+<h3>Dataset Directory Structure</h3>
+<pre>
 data/
  ├── nv/
  ├── mel/
@@ -28,15 +43,27 @@ data/
  ├── akiec/
  ├── vasc/
  └── df/
+</pre>
 
-CNN Architecture:
-Input size: 224 × 224 × 3 (RGB images)
-4 convolutional blocks
-Each block has Convolution → Batch Normalization → ReLU → Max Pooling
-Filter sizes increase progressively (32 → 64 → 128 → 256)
-Global Average Pooling to reduce parameters
-Dropout (for global pooling) to prevent overfitting
-Fully connected layer with 7 neurons (one per class)
-Softmax layer (produces probability distribution) 
-Classification layer for final prediction
+<h2>CNN Architecture</h2>
+<ul>
+    <li>Input size: <strong>224 × 224 × 3</strong> (RGB images)</li>
+    <li>Four convolutional blocks</li>
+    <li>Each block consists of:
+        <ul>
+            <li>Convolution</li>
+            <li>Batch Normalization</li>
+            <li>ReLU activation</li>
+            <li>Max Pooling</li>
+        </ul>
+    </li>
+    <li>Progressive filter sizes: <strong>32 → 64 → 128 → 256</strong></li>
+    <li>Global Average Pooling to reduce parameters</li>
+    <li>Dropout layer to prevent overfitting</li>
+    <li>Fully connected layer with <strong>7 neurons</strong> (one per class)</li>
+    <li>Softmax layer for probability distribution</li>
+    <li>Classification layer for final prediction</li>
+</ul>
 
+</body>
+</html>
